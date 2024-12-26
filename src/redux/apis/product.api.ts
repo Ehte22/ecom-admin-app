@@ -3,6 +3,7 @@ import { IProduct } from "../../models/product.interface"
 
 export const productApi = createApi({
     reducerPath: "productApi",
+    // baseQuery: fetchBaseQuery({ baseUrl: `${process.env.PRODUCT_URL}/api/v1/product`, credentials: "include" }),
     baseQuery: fetchBaseQuery({ baseUrl: `https://e-com-product-app-server.vercel.app/api/v1/product`, credentials: "include" }),
     tagTypes: ["product"],
     endpoints: (builder) => {

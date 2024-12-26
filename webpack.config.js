@@ -66,6 +66,7 @@ module.exports = (_, argv) => ({
       name: "admin",
       filename: "remoteEntry.js",
       remotes: {
+        // order: "order@http://localhost:3004/remoteEntry.js",
         order: "order@https://e-com-order-app-client.vercel.app/remoteEntry.js"
       },
       exposes: {
