@@ -9,7 +9,8 @@ const printCompilationMessage = require('./compilation.config.js');
 
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:4000/",
+    // publicPath: "http://localhost:4000/",
+    publicPath: "https://ecom-admin-app-six.vercel.app/",
   },
 
   resolve: {
