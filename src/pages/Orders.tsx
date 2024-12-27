@@ -3,7 +3,7 @@ import { useGetOrdersQuery, useUpdateOrderStatusMutation } from "order/redux/ord
 import { toast } from '../services/toast';
 
 const Orders = () => {
-    const { data } = useGetOrdersQuery();
+    const { data } = useGetOrdersQuery({ fetchAllOrders: true });
     const [updateOrderStatus, { isSuccess, data: updateMessage }] = useUpdateOrderStatusMutation();
 
     const handleUpdateOrderStatus = (id: string, status: string, returnStatus: string | null) => {
@@ -43,7 +43,7 @@ const Orders = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {data?.map((order: any) => (
+                                    {data?.slice().reverse().map((order: any) => (
                                         <tr key={order._id} className="border-b hover:bg-gray-50">
                                             <td className="px-6 py-4 text-sm">{order._id}</td>
                                             <td className="px-6 py-4">

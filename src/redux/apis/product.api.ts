@@ -3,8 +3,18 @@ import { IProduct } from "../../models/product.interface"
 
 export const productApi = createApi({
     reducerPath: "productApi",
-    // baseQuery: fetchBaseQuery({ baseUrl: `${process.env.PRODUCT_URL}/api/v1/product`, credentials: "include" }),
-    baseQuery: fetchBaseQuery({ baseUrl: `https://e-com-product-app-server.vercel.app/api/v1/product`, credentials: "include" }),
+    baseQuery: fetchBaseQuery({
+        // baseUrl: `${process.env.PRODUCT_URL}/api/v1/product`, credentials: "include", prepareHeaders(headers, { getState }) {
+        baseUrl: `https://e-com-product-app-server.vercel.app/api/v1/product`, credentials: "include", prepareHeaders(headers, { getState }) {
+            const state = getState() as any
+            const token = state.auth.user?.token
+            if (token) {
+                headers.set("Authorization", `Bearer ${token}`);
+            }
+
+            return headers;
+        },
+    }),
     tagTypes: ["product"],
     endpoints: (builder) => {
         return {
